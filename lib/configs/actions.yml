@@ -1,0 +1,11 @@
+- display_name: work
+  fun: -5
+  mana: 30
+  money: 100
+  weariness: 70
+
+- display_name: work2
+  fun: -5
+  mana: 30
+  money: 100
+  weariness: 70

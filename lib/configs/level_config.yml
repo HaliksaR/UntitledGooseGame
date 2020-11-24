@@ -1,0 +1,27 @@
+easy:
+  health: 100
+  mana: 0
+  fun: 0
+  money: 0
+  weariness: 0
+
+medium:
+  health: 75
+  mana: 0
+  fun: 0
+  money: 0
+  weariness: 0
+
+hard:
+  health: 50
+  mana: 0
+  fun: 0
+  money: 0
+  weariness: 0
+
+goose_god:
+  health: 99
+  mana: 99
+  fun: 99
+  money: 99
+  weariness: 99
