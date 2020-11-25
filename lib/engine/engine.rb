@@ -24,12 +24,15 @@ class Engine
       else
         start_action(input.to_i - 1)
       end
+      exit unless @goose.alive
     end
   end
 
   def start_action(item)
     show_error_menu_item unless (0..@actions.length).include?(item)
-    show_action(@actions[item])
+    puts @actions[item].condition.error_message unless @actions[item].check_condition(@goose)
+    show_goose_info(@goose)
+    @goose.validate_a_lot_of
   end
 
   def start_menu_action
@@ -42,6 +45,7 @@ class Engine
         show_enter_level
         goose_params = LevelLoader.load_level(gets.chomp)
         @goose = Goose.new(name, goose_params)
+        show_goose_info(@goose)
         break
       when LOAD_PROFILE
         name, params, alive = @saves_manager.load
@@ -73,6 +77,7 @@ class Engine
       when LOAD_PROFILE
         name, params = @saves_manager.load
         @goose = Goose.new(name, params)
+        show_goose_info(@goose)
       when REMOVE_PROFILE
         @saves_manager.delete
       when REMOVE_ALL_PROFILE

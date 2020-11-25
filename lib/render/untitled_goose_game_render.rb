@@ -46,7 +46,9 @@ module UntitledGooseGameRender
   end
 
   def show_actions(actions)
-    actions.each_with_index { |item, index| puts("#{index + 1}) #{item.display_name}") }
+    actions.each_with_index do |item, index|
+      puts("#{index + 1}) #{item.display_name}")
+    end
   end
 
   def show_item_game_menu

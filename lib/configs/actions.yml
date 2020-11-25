@@ -1,11 +1,27 @@
-- display_name: work
-  fun: -5
-  mana: 30
-  money: 100
-  weariness: 70
+- display_name: 'Пойти на работу'
+  condition:
+    error_message: 'Можно только если алкоголь < 50 а усталость < 10'
+    mana:
+      max: 50
+    weariness:
+      max: 10
+  change:
+    fun: -5
+    mana: -30
+    weariness: 70
+    money: 100
 
-- display_name: work2
-  fun: -5
-  mana: 30
-  money: 100
-  weariness: 70
+- display_name: 'Петь в метро'
+  change:
+    fun: 1
+    mana: 10
+    weariness: 20
+    money: 10
+  gifts:
+    money:
+      condition:
+        error_message: 'Not stonks'
+        mana:
+          min: 40
+          max: 70
+      added: 50
