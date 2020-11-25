@@ -136,3 +136,23 @@
   change:
     health: 30
     mana: -70
+
+- display_name: 'Now this looks like a job for me...'
+  change:
+    fun: 5
+  gifts:
+    fun:
+      condition:
+        error_message: 'So everybody just follow me...'
+        mana:
+          min: 0
+    health:
+      condition:
+        error_message: 'Cause we need a little controversy...'
+        mana:
+          min: 0
+    mana:
+      condition:
+        error_message: 'Cause it feels so empty without me...'
+        mana:
+          min: 0
