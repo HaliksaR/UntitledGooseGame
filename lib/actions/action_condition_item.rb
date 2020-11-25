@@ -15,10 +15,10 @@ class ActionConditionItem
   end
 
   def check_max(param_value)
-    @max != nil ? param_value < @max : true
+    @max.nil? ? true : param_value < @max
   end
 
   def check_min(param_value)
-    @min != nil ? param_value > @min : true
+    @min.nil? ? true : param_value > @min
   end
 end

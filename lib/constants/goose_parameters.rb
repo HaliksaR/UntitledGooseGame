@@ -1,5 +1,4 @@
 module GooseParameters
-
   NAME = 'name'.freeze
   FUN = 'fun'.freeze
   MANA = 'mana'.freeze

@@ -3,7 +3,6 @@ require_relative '../loaders/level_loader'
 require_relative '../render/untitled_goose_game_render'
 
 class Engine
-
   include UntitledGooseGameRender
 
   def initialize
@@ -30,7 +29,7 @@ class Engine
 
   def start_action(item)
     show_error_menu_item unless (0..@actions.length).include?(item)
-    puts @actions[item].condition.error_message unless @actions[item].check_condition(@goose)
+    show_error_condition(@actions[item].condition) unless @actions[item].start(@goose)
     show_goose_info(@goose)
     @goose.validate_a_lot_of
   end
@@ -40,22 +39,15 @@ class Engine
       show_start_menu
       case START_MENU_LIST[gets.chomp.to_i - 1]
       when NEW_GAME
-        show_enter_name
-        name = gets.chomp
-        show_enter_level
-        goose_params = LevelLoader.load_level(gets.chomp)
-        @goose = Goose.new(name, goose_params)
-        show_goose_info(@goose)
+        new_game
         break
       when LOAD_PROFILE
-        name, params, alive = @saves_manager.load
-        @goose = Goose.new(name, params, alive)
-        show_goose_info(@goose)
+        load_profile
         break
       when REMOVE_PROFILE
-        @saves_manager.delete
+        delete_profile
       when REMOVE_ALL_PROFILE
-        @saves_manager.delete_all
+        delete_all_profile
       when EXIT
         exit
       else
@@ -73,20 +65,45 @@ class Engine
       when RESUME
         break
       when SAVE_PROFILE
-        @saves_manager.save(@goose)
+        save_profile
       when LOAD_PROFILE
-        name, params = @saves_manager.load
-        @goose = Goose.new(name, params)
-        show_goose_info(@goose)
+        load_profile
       when REMOVE_PROFILE
-        @saves_manager.delete
+        delete_profile
       when REMOVE_ALL_PROFILE
-        @saves_manager.delete_all
+        delete_all_profile
       when EXIT
         exit
       else
         show_error_menu_item
       end
     end
+  end
+
+  def new_game
+    show_enter_name
+    name = gets.chomp
+    show_enter_level
+    goose_params = LevelLoader.load_level(gets.chomp)
+    @goose = Goose.new(name, goose_params, true)
+    show_goose_info(@goose)
+  end
+
+  def load_profile
+    name, params, alive = @saves_manager.load
+    @goose = Goose.new(name, params, alive)
+    show_goose_info(@goose)
+  end
+
+  def save_profile
+    @saves_manager.save(@goose)
+  end
+
+  def delete_profile
+    @saves_manager.delete
+  end
+
+  def delete_all_profile
+    @saves_manager.delete_all
   end
 end

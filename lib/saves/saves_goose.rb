@@ -4,7 +4,6 @@ require 'json'
 require 'fileutils'
 
 class SavesGoose
-
   include GooseParameters
 
   TIME_PATTERN = '%Y-%m-%d_%H_%M_%S'.freeze
@@ -14,13 +13,13 @@ class SavesGoose
 
   def save(goose)
     goose_params = {
-        NAME => goose.name,
-        FUN => goose.fun,
-        MANA => goose.mana,
-        HEALTH => goose.health,
-        WEARINESS => goose.weariness,
-        MONEY => goose.money,
-        ALIVE => goose.alive
+      NAME => goose.name,
+      FUN => goose.fun,
+      MANA => goose.mana,
+      HEALTH => goose.health,
+      WEARINESS => goose.weariness,
+      MONEY => goose.money,
+      ALIVE => goose.alive
     }
 
     time = Time.new.strftime(TIME_PATTERN)

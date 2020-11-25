@@ -4,7 +4,7 @@ class Goose
   include GooseParameters
   attr_accessor :name, :fun, :mana, :health, :weariness, :money, :alive
 
-  def initialize(name, params, alive = true)
+  def initialize(name, params, alive)
     @name = name
     @fun = params[FUN]
     @mana = params[MANA]
@@ -14,7 +14,7 @@ class Goose
     @alive = alive
   end
 
-  def set_up_actions(changes)
+  def setup_actions(changes)
     @fun += changes.fun
     @mana += changes.mana
     @health += changes.health
@@ -23,45 +23,36 @@ class Goose
   end
 
   def validate_a_lot_of
-    check_health
-    check_mana
-    check_fun
-    check_weariness
-    check_money
+    @alive = check_health && check_mana && check_fun && check_weariness && check_money
   end
 
   def check_health
-    if @health.zero?
-      @alive = false
-      puts "Ваш гусь #{@name}, сдох"
-    end
+    result = @health.positive?
+    puts "Ваш гусь #{@name}, сдох" unless result
+    result
   end
 
   def check_mana
-    if @mana == 100
-      @alive = false
-      puts "Ваш гусь #{@name}, попал в хогвардс"
-    end
+    result = @mana < 100
+    puts "Ваш гусь #{@name}, попал в хогвардс" unless result
+    result
   end
 
   def check_fun
-    if @fun == -10
-      @alive = false
-      puts "У вашего гуся #{@name}, появились суецидальные мысли..."
-    end
+    result = @fun > -10
+    puts "У вашего гуся #{@name}, появились суецидальные мысли..." unless result
+    result
   end
 
   def check_weariness
-    if @weariness == 100
-      @alive = false
-      puts "Ваш гусь #{@name}, добегался..."
-    end
+    result = @weariness < 100
+    puts "Ваш гусь #{@name}, добегался..." unless result
+    result
   end
 
   def check_money
-    if @money == -50
-      @alive = false
-      puts "За вашим гусем #{@name}, выехали коллекторы..."
-    end
+    result = @money > -50
+    puts "За вашим гусем #{@name}, выехали коллекторы..." unless result
+    result
   end
 end

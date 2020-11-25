@@ -1,7 +1,6 @@
 require_relative '../constants/action_const'
 
 class ActionChange
-
   include ActionConst
 
   attr_accessor :fun, :mana, :health, :weariness, :money

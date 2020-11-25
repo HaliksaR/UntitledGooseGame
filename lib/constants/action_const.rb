@@ -1,5 +1,4 @@
 module ActionConst
-
   DISPLAY_NAME = 'display_name'.freeze
   CONDITION = 'condition'.freeze
   CONDITION_ERROR = 'error_message'.freeze

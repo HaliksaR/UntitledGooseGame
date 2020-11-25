@@ -7,10 +7,14 @@ class ActionGifts
   attr_accessor :fun, :mana, :health, :weariness, :money
 
   def initialize(params)
-    @fun = ActionGiftsItem.new(params[FUN]) unless params[FUN].nil?
-    @mana = ActionGiftsItem.new(params[MANA]) unless params[MANA].nil?
-    @health = ActionGiftsItem.new(params[HEALTH]) unless params[HEALTH].nil?
-    @weariness = ActionGiftsItem.new(params[WEARINESS]) unless params[WEARINESS].nil?
-    @money = ActionGiftsItem.new(params[MONEY]) unless params[MONEY].nil?
+    @fun = init_item(params, FUN)
+    @mana = init_item(params, MANA)
+    @health = init_item(params, HEALTH)
+    @weariness = init_item(params, WEARINESS)
+    @money = init_item(params, MONEY)
+  end
+
+  def init_item(params, key)
+    ActionGiftsItem.new(params[key]) unless params[key].nil?
   end
 end

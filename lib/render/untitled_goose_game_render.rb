@@ -1,5 +1,4 @@
 module UntitledGooseGameRender
-
   NEW_GAME = 'New game'.freeze
   PROFILE_INFO = 'Goose info'.freeze
   SAVE_PROFILE = 'Save your goose'.freeze
@@ -18,21 +17,21 @@ module UntitledGooseGameRender
   GAME_MENU = "Enter '#{MENU}' for open menu".freeze
 
   MENU_LIST = [
-      PROFILE_INFO,
-      SAVE_PROFILE,
-      LOAD_PROFILE,
-      REMOVE_PROFILE,
-      REMOVE_ALL_PROFILE,
-      RESUME,
-      EXIT
+    PROFILE_INFO,
+    SAVE_PROFILE,
+    LOAD_PROFILE,
+    REMOVE_PROFILE,
+    REMOVE_ALL_PROFILE,
+    RESUME,
+    EXIT
   ].freeze
 
   START_MENU_LIST = [
-      NEW_GAME,
-      LOAD_PROFILE,
-      REMOVE_PROFILE,
-      REMOVE_ALL_PROFILE,
-      EXIT
+    NEW_GAME,
+    LOAD_PROFILE,
+    REMOVE_PROFILE,
+    REMOVE_ALL_PROFILE,
+    EXIT
   ].freeze
 
   def show_menu
@@ -63,6 +62,12 @@ module UntitledGooseGameRender
     puts ERROR_MESSAGE_MENU_ITEM
   end
 
+  def show_error_condition(condition)
+    return if condition.nil?
+
+    puts condition.error_message
+  end
+
   def show_enter_name
     puts ENTER_NAME
     show_enter
@@ -80,7 +85,6 @@ module UntitledGooseGameRender
     puts "health: #{goose.health}"
     puts "weariness: #{goose.weariness}"
     puts "money: #{goose.money}"
-    puts "alive: #{goose.alive}"
   end
 
   def show_action(action)
