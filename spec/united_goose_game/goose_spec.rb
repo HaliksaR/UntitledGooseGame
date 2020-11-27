@@ -4,7 +4,6 @@ require_relative '../../lib/actions/action_change'
 
 
 RSpec.describe Goose do
-  describe 'goose tests' do
     let(:params_new) { { 'health' => 100, 'mana' => 0, 'fun' => 0, 'money' => 0, 'weariness' => 0 } }
     let(:params_action) { { 'health' => -20, 'mana' => 50, 'fun' => 20, 'money' => 30, 'weariness' => 40 } }
     let(:params_bad_action) { { 'health' => -200, 'mana' => 200, 'fun' => -200, 'money' => -200, 'weariness' => 200 } }
@@ -32,6 +31,5 @@ RSpec.describe Goose do
       expect(goose.check_weariness).to eq(false)
       expect(goose.check_money).to eq(false)
       expect(goose.validate_a_lot_of).to eq(false)
-    end
   end
 end

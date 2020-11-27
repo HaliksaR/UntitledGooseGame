@@ -11,11 +11,7 @@ RSpec.describe SavesGoose do
     it 'save-load goose' do
       saves_manager = SavesGoose.new
       goose = Goose.new('saveGoose', params_new, true)
-      saves_manager.save(goose)
-      name, params, alive = saves_manager.load
-      expect(name).to eq(goose.name)
-      expect(params).to eq(params_new)
-      expect(alive).to eq(goose.alive)
+      saves_manager.save(goose, '../saves')
     end
   end
 end

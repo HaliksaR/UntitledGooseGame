@@ -3,7 +3,6 @@ require_relative '../../lib/untitled_goose_game/goose'
 require_relative '../../lib/actions/action'
 
 RSpec.describe Action do
-  describe 'action tests' do
 
     let(:params_goose) { {'health' => 100, 'mana' => 0, 'fun' => 0, 'money' => 0, 'weariness' => 0} }
     let(:params_action) { {'display_name' => 'test', 'condition' =>
@@ -21,5 +20,4 @@ RSpec.describe Action do
       action.start(goose)
       expect(goose.health).to eq(80)
     end
-  end
 end

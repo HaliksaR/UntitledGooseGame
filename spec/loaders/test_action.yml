@@ -1,0 +1,3 @@
+- display_name: 'Посмотреть сумерки'
+  change:
+    fun: -10

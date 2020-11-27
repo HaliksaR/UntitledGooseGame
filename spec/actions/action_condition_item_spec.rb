@@ -6,7 +6,7 @@ RSpec.describe ActionConditionItem do
 
   it 'test condition init' do
     action_item = ActionConditionItem.new(params)
-    expect(test.max).to eq(70)
+    expect(action_item.max).to eq(70)
   end
 
   it 'test check min max true' do

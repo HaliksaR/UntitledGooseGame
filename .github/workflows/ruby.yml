@@ -17,5 +17,5 @@ jobs:
           bundle install --jobs 4 --retry 3
       - name: Rubocop
         run: bundle exec rubocop
-#      - name: Rake
-#        run: bundle exec rake
+      - name: RSpec
+        run: bundle exec rspec
