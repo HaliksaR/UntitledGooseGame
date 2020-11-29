@@ -2,7 +2,12 @@ require 'rspec'
 require_relative '../../lib/actions/action_condition_item'
 
 RSpec.describe ActionConditionItem do
-  let(:params) { { 'min' => 20, 'max' => 70 } }
+  let(:params) {
+    {
+        'min' => 20,
+        'max' => 70
+    }
+  }
 
   it 'test condition init' do
     action_item = ActionConditionItem.new(params)
@@ -16,6 +21,6 @@ RSpec.describe ActionConditionItem do
 
   it 'test check min max false' do
     action_item = ActionConditionItem.new(params)
-    expect(action_item.check_min_max(10)).to eq(false )
+    expect(action_item.check_min_max(10)).to eq(false)
   end
 end
