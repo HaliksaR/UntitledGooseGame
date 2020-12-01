@@ -80,7 +80,6 @@ class Engine
     end
   end
 
-  # @todo ТЕСТИМ должен вернуть гуся
   def new_game
     show_enter_name
     name = gets.chomp
@@ -90,19 +89,16 @@ class Engine
     show_goose_info(@goose)
   end
 
-  # @todo ТЕСТИМ
   def load_profile
     name, params, alive = @saves_manager.load
     @goose = Goose.new(name, params, alive)
     show_goose_info(@goose)
   end
 
-  # @todo ТЕСТИМ
   def save_profile
     @saves_manager.save(@goose)
   end
 
-  # @todo ТЕСТИМ
   def delete_profile
     @saves_manager.delete
   end
