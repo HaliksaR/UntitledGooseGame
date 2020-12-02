@@ -16,4 +16,4 @@ Metrics/MethodLength:
 
 Metrics/BlockLength:
   Exclude:
-    - 'test/**/*_spec.rb'
+    - 'spec/**/*.rb'
